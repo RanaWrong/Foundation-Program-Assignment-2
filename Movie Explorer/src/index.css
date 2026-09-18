@@ -112,6 +112,10 @@ img {
 .shadow-md { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1); }
 .hover\:shadow-xl:hover { box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 8px 10px -6px rgba(0, 0, 0, 0.2); }
 .transition { transition-property: all; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 150ms; }
+.transition-transform { transition-property: transform; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 150ms; }
+.hover\:-translate-y-1:hover { transform: translateY(-0.25rem); }
+/* `.group` marks the card; descendants with `group-hover:*` react when the card is hovered */
+.group:hover .group-hover\:scale-105 { transform: scale(1.05); }
 
 .border { border: 1px solid rgba(148, 163, 184, 0.25); }
 .outline-none { outline: none; }
@@ -183,6 +187,10 @@ nav a { text-decoration: none; color: inherit; font-weight: 500; transition: col
   .sm\:text-3xl { font-size: 1.875rem; line-height: 2.25rem; }
   .sm\:text-4xl { font-size: 2.25rem; line-height: 2.5rem; }
   .sm\:text-6xl { font-size: 3.75rem; line-height: 1; }
+}
+
+@media (min-width: 768px) {
+  .md\:text-6xl { font-size: 3.75rem; line-height: 1; }
 }
 
 @media (min-width: 1024px) {

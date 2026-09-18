@@ -2,12 +2,14 @@ import { posterUrl } from "../utils/poster";
 
 function MovieCard({ movie, onDetails }) {
   return (
-    <div className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition duration-300">
-      <img
-        src={posterUrl(movie)}
-        alt={movie.name}
-        className="w-full h-72 sm:h-80 object-cover"
-      />
+    <div className="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-300">
+      <div className="overflow-hidden">
+        <img
+          src={posterUrl(movie)}
+          alt={movie.name}
+          className="w-full h-72 sm:h-80 object-cover transition-transform duration-300 group-hover:scale-105"
+        />
+      </div>
 
       <div className="p-4">
         <h2 className="text-xl font-bold mb-2 text-gray-900">
