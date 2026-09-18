@@ -15,7 +15,7 @@
 - **✨ Details modal**: Large poster, title, rating, premiere date, genre chips and the full summary.
   - Closes via the ✕ button, a click on the backdrop (clicks inside the card are stopped with `stopPropagation`), or the **Escape** key (listener cleaned up on unmount).
 - **⏳ State handling**: Loading indicator while fetching, error message if the API fails, and a "No movies found." empty state.
-- **📱 Responsive layout**: CSS Grid adapts from 1 column on mobile to 2 on tablets and 4 on desktop.
+- **📱 Responsive layout**: CSS Grid adapts from 1 column on mobile to 2 on tablets and 3 on desktop.
 - **🎨 Dark cinematic theme** with hover micro-interactions.
 
 ---
@@ -119,7 +119,7 @@ Movie Explorer/
 - [ ] **Error state**: with the network offline, an error message is shown instead of the grid.
 - [ ] **Missing artwork**: search `the` — shows without a poster display the placeholder, not a broken image.
 - [ ] **Modal**: "See Details" opens the modal with the right show; closes via ✕, backdrop click, and Escape.
-- [ ] **Responsive**: grid is 1 column on a phone, 2 on a tablet, 4 on desktop; nothing overflows horizontally.
+- [ ] **Responsive**: grid is 1 column on a phone, 2 on a tablet, 3 on desktop; nothing overflows horizontally.
 - [ ] **Deep link**: refreshing on `/movies` in the deployed app does not 404.
 
 ---
