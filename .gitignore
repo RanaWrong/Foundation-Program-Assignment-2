@@ -1,0 +1,17 @@
+# Dependencies
+node_modules
+**/node_modules
+
+# Production
+dist
+**/dist
+
+# Logs & Environment
+*.log
+.DS_Store
+*.local
+
+# Editor
+.vscode/*
+!.vscode/extensions.json
+.idea
