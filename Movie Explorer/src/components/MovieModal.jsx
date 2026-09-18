@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { posterUrl } from "../utils/poster";
 
 function MovieModal({ movie, onClose }) {
   useEffect(() => {
@@ -30,7 +31,7 @@ function MovieModal({ movie, onClose }) {
       >
         <div className="relative">
           <img
-            src={movie.image?.original || movie.image?.medium}
+            src={posterUrl(movie, "original")}
             alt={movie.name}
             className="w-full h-72 object-cover"
           />

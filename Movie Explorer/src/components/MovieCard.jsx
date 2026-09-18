@@ -1,8 +1,10 @@
+import { posterUrl } from "../utils/poster";
+
 function MovieCard({ movie, onDetails }) {
   return (
     <div className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition duration-300">
       <img
-        src={movie.image?.medium}
+        src={posterUrl(movie)}
         alt={movie.name}
         className="w-full h-72 sm:h-80 object-cover"
       />

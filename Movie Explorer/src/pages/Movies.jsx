@@ -10,45 +10,44 @@ function Movies() {
   const [error, setError] = useState("");
 
   useEffect(() => {
+    // Abort the in-flight request whenever searchTerm changes so a slow
+    // response for an older query can't overwrite the results of a newer one.
+    const controller = new AbortController();
+    const query = searchTerm.trim();
+
     const fetchMovies = async () => {
       try {
         setLoading(true);
         setError("");
 
-        if (searchTerm.trim() === "") {
-          const response = await fetch("https://api.tvmaze.com/shows");
+        const url =
+          query === ""
+            ? "https://api.tvmaze.com/shows"
+            : `https://api.tvmaze.com/search/shows?q=${encodeURIComponent(query)}`;
 
-          if (!response.ok) {
-            throw new Error("Failed to fetch movies");
-          }
-
-          const data = await response.json();
-
-          setMovies(data);
-          return;
-        }
-
-        const response = await fetch(
-          `https://api.tvmaze.com/search/shows?q=${searchTerm}`
-        );
+        const response = await fetch(url, { signal: controller.signal });
 
         if (!response.ok) {
-          throw new Error("Failed to search movies");
+          throw new Error(query ? "Failed to search movies" : "Failed to fetch movies");
         }
 
         const data = await response.json();
 
-        const shows = data.map((item) => item.show);
-
-        setMovies(shows);
+        setMovies(query ? data.map((item) => item.show) : data);
+        setLoading(false);
       } catch (error) {
+        if (error.name === "AbortError") {
+          return; // superseded by a newer request; leave state to that one
+        }
+
         setError(error.message);
-      } finally {
         setLoading(false);
       }
     };
 
     fetchMovies();
+
+    return () => controller.abort();
   }, [searchTerm]);
 
   return (
