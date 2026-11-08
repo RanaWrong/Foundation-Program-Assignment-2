@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import DOMPurify from "dompurify";
 import { posterUrl } from "../utils/poster";
 
 function MovieModal({ movie, onClose }) {
@@ -79,7 +80,8 @@ function MovieModal({ movie, onClose }) {
             <div
               className="text-gray-700 leading-relaxed"
               dangerouslySetInnerHTML={{
-                __html: movie.summary || "No summary available.",
+                // The summary is HTML from a third-party API: sanitize before rendering.
+                __html: DOMPurify.sanitize(movie.summary || "No summary available."),
               }}
             />
           </div>
